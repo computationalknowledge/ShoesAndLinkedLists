@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            LinkedList ll = new LinkedList();
+            Console.WriteLine("number of shoes is {0} ", ll.ConstructLinkedList());
+        }
+    }
+    class Node
+    {
+        public Node(string owner, int howManyShoes)
+        {
+            NumberOfShoes = howManyShoes;
+            ShoeOwner = owner;
+        }
+        public int NumberOfShoes = 0;
+        public string ShoeOwner;
+        public Node next;
+    }
+
+    class LinkedList
+    {
+        public int ConstructLinkedList()
+        {
+            Node head = new Node("Mary", 6);
+            Node red = new Node("Susan", 9);
+            Node blue = new Node("Irene", 3);
+            Node yellow = new Node("Laura", 8);
+            Node tail = yellow;
+            head.next = red;
+            red.next = blue;
+            blue.next = yellow;
+
+            return (this.FindTotalNumberOfShoes(head));
+        }
+        public int FindTotalNumberOfShoes(Node startingPoint)
+        {
+            int NumberOfShoes = 0;
+            Node CurrentNode = startingPoint;
+            while (CurrentNode != null) {
+                        NumberOfShoes += CurrentNode.NumberOfShoes;          
+                        CurrentNode = CurrentNode.next;        
+                    }
+
+            return NumberOfShoes;
+        }
+    }
+
+}
